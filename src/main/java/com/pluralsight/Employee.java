@@ -1,5 +1,9 @@
 package com.pluralsight;
 
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
+
 public class Employee {
     private int employeeId;
     private String name;
@@ -50,9 +54,51 @@ public class Employee {
 
     }
 
+    public void punchIn () {
+
+        LocalTime time = LocalTime.now();
+        DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm");
+
+        String formattedTime = time.format(timeFormatter);
+        String [] timeParts = formattedTime.split(":");
+
+        int hours = Integer.parseInt(timeParts[0]);
+        int minutes = Integer.parseInt(timeParts[1]);
+
+        // Converting to hour format for calculation
+        minutes = minutes / 60;
+
+        hours = hours + minutes;
+
+        this.startTime = hours;
+
+
+    }
+
     public void punchOut (double time) {
 
         this.hoursWorked += (time - this.startTime);
+
+        this.startTime = 0;
+
+    }
+
+    public void punchOut () {
+
+        LocalTime time = LocalTime.now();
+        DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm");
+
+        String formattedTime = time.format(timeFormatter);
+        String [] timeParts = formattedTime.split(":");
+
+        int hours = Integer.parseInt(timeParts[0]);
+        int minutes = Integer.parseInt(timeParts[1]);
+
+        minutes = minutes / 60;
+
+        hours = hours + minutes;
+
+        this.hoursWorked += (hours - this.startTime);
 
         this.startTime = 0;
 
