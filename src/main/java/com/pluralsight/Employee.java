@@ -6,6 +6,7 @@ public class Employee {
     private String department;
     private double payRate;
     private double hoursWorked;
+    private double time;
 
     public Employee(int employeeId, String name, String department, double payRate, double hoursWorked) {
         this.employeeId = employeeId;
@@ -42,4 +43,19 @@ public class Employee {
             return 0;
         }
     }
+
+    public double punchIn (double time) {
+
+        return time;
+
+    }
+
+    public double punchOut (double time) {
+
+        this.hoursWorked = time - punchIn(time);
+
+        return this.hoursWorked;
+
+    }
+
 }
