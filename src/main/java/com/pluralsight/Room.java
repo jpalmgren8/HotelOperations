@@ -33,29 +33,21 @@ public class Room {
         return (!this.dirty && !this.occupied);
     }
 
-    public boolean checkIn () {
+    public void checkIn () {
 
-        if (this.isAvailable() && cleanroom()) {
-            this.occupied = true;
-            this.dirty = true;
-            return true;
-        } else {
-            return false;
-        }
+        this.occupied = true;
+        this.dirty = true;
 
     }
 
-    public boolean checkout () {
+    public void checkout () {
 
-        this.dirty = false;
         this.occupied = false;
 
-        return true;
-
     }
 
-    public boolean cleanroom () {
-        return (!this.dirty && this.isAvailable());
+    public void cleanroom () {
+        this.dirty = false;
     }
 }
 
