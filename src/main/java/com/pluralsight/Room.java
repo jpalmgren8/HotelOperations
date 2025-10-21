@@ -5,34 +5,32 @@ public class Room {
     private double price;
     private boolean occupied;
     private boolean dirty;
-    private boolean available;
 
     public Room(int beds, double price, boolean occupied, boolean dirty, boolean available) {
         this.beds = beds;
         this.price = price;
         this.occupied = occupied;
         this.dirty = dirty;
-        this.available = available;
     }
 
     public int getBeds() {
-        return beds;
+        return this.beds;
     }
 
     public double getPrice() {
-        return price;
+        return this.price;
     }
 
     public boolean isOccupied() {
-        return occupied;
+        return this.occupied;
     }
 
     public boolean isDirty() {
-        return dirty;
+        return this.dirty;
     }
 
     public boolean isAvailable() {
-        return available;
+        return (!this.dirty && !this.occupied);
     }
 }
 

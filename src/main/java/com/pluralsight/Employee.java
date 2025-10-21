@@ -17,38 +17,29 @@ public class Employee {
 
     public double getTotalPay() {
 
-        double totalPay = 0;
+        double regularPay = this.payRate * this.getRegularHours();
+        double overtimePay = (this.payRate * 1.5) * this.getOvertimeHours();
 
-        if (getOvertimeHours() > 0) {
-            totalPay = (hoursWorked * payRate) + (getOvertimeHours() * (payRate * 1.5));
-        } else {
-            totalPay = getRegularHours() * payRate;
-        }
+        return regularPay + overtimePay;
 
-        return totalPay;
     }
 
     public double getRegularHours() {
 
-        double regularHours = 0;
-
-        if (hoursWorked <= 40) {
-            regularHours = hoursWorked;
+        if (this.hoursWorked <= 40) {
+            return this.hoursWorked;
+        } else {
+            return 40;
         }
 
-        return regularHours;
     }
 
     public double getOvertimeHours() {
 
-        double overtimeHours = 0;
-
-        if (hoursWorked > 40) {
-            overtimeHours = hoursWorked - getRegularHours();
+        if (this.hoursWorked > 40) {
+            return this.hoursWorked - 40;
         } else {
-            return overtimeHours;
+            return 0;
         }
-
-        return overtimeHours;
     }
 }
