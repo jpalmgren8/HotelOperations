@@ -82,7 +82,7 @@ public class Employee {
 
         this.hoursWorked += (time - this.startTime);
 
-        this.startTime = 0;
+        this.startTime = -1;
 
     }
 
@@ -107,7 +107,7 @@ public class Employee {
 
         this.hoursWorked += (hours - this.startTime);
 
-        this.startTime = 0;
+        this.startTime = -1;
 
     }
 
