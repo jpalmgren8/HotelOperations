@@ -57,18 +57,21 @@ public class Employee {
     public void punchIn () {
 
         LocalTime time = LocalTime.now();
-        DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm");
+        DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm:ss");
 
         String formattedTime = time.format(timeFormatter);
         String [] timeParts = formattedTime.split(":");
 
-        int hours = Integer.parseInt(timeParts[0]);
-        int minutes = Integer.parseInt(timeParts[1]);
+        double hours = Double.parseDouble(timeParts[0]);
+        double minutes = Double.parseDouble(timeParts[1]);
+        double seconds = Double.parseDouble(timeParts[2]);
 
         // Converting to hour format for calculation
+        seconds = seconds / 3600;
+
         minutes = minutes / 60;
 
-        hours = hours + minutes;
+        hours = hours + minutes + seconds;
 
         this.startTime = hours;
 
@@ -86,17 +89,21 @@ public class Employee {
     public void punchOut () {
 
         LocalTime time = LocalTime.now();
-        DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm");
+        DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm:ss");
 
         String formattedTime = time.format(timeFormatter);
         String [] timeParts = formattedTime.split(":");
 
-        int hours = Integer.parseInt(timeParts[0]);
-        int minutes = Integer.parseInt(timeParts[1]);
+        double hours = Double.parseDouble(timeParts[0]);
+        double minutes = Double.parseDouble(timeParts[1]);
+        double seconds = Double.parseDouble(timeParts[2]);
+
+        // Converting to hour format for calculation
+        seconds = seconds / 3600;
 
         minutes = minutes / 60;
 
-        hours = hours + minutes;
+        hours = hours + minutes + seconds;
 
         this.hoursWorked += (hours - this.startTime);
 
